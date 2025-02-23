@@ -22,10 +22,10 @@ const CharacterCard = ({ character }: { character: Character }) => {
     />
 
     <div className="flex flex-col h-full justify-start sm:block ml-0 sm:ml-0">
-      <div className=" h-7 mb-[5px] sm:mt-4">
+      <div className=" sm:h-7 mb-[5px] sm:mt-4">
         <h2 className="text-[20px] sm:text-xl font-normal tracking-[1px] text-black">{character.name}</h2>
       </div>
-      <div className="h-7 mb-[13px]">
+      <div className="h-7 sm:mb-[13px]">
         <p className="text-[15px] sm:text-base leading-7 tracking-[1px] font-normal text-black">{planetName}</p>
       </div>
 
