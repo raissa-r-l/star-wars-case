@@ -19,7 +19,6 @@ const CharacterList = ({ selectedPlanets }: { selectedPlanets: string[] }) => {
     });
   }, [page]);
 
-  // Carregar mapa de planetas (URL -> Nome)
   useEffect(() => {
     async function fetchPlanets() {
       const response = await fetch("https://swapi.dev/api/planets/");
@@ -43,18 +42,20 @@ const CharacterList = ({ selectedPlanets }: { selectedPlanets: string[] }) => {
       <div className="h-10 mb-[43px] ">
       <h1 className="font-light text-[34px] leading-10 text-[#333333]">All Characters</h1>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {filteredCharacters.map((char, index) => (
           <CharacterCard key={index} character={char} />
         ))}
       </div>
+      <div className="w-full h-12 flex items-center justify-center">
       <button
         onClick={() => setPage(page + 1)}
-        className="bg-blue-500 text-white p-2 rounded-md"
+        className="border-[1px] border-[#002B53] w-[196.02px] pr-[55.41px] pl-[55.61px] md:w-[486.02px] h-12 py-[1px] md:pr-[200.41px] md:pl-[200.61px]"
         disabled={loading}
       >
         {loading ? "Loading..." : "Load More"}
       </button>
+      </div>
     </div>
   );
 };
