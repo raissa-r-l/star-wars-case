@@ -4,8 +4,8 @@ import { fetchCharacters } from "../services/api";
 import CharacterCard from "./CharacterCard";
 import { Character } from "../types/character";
 
-const ITEMS_PER_PAGE_DEFAULT = 8; // Padrão de 8 itens carregados
-const ITEMS_PER_PAGE_4K = 12; // 12 itens para telas acima de 2000px
+const ITEMS_PER_PAGE_DEFAULT = 8; 
+const ITEMS_PER_PAGE_4K = 6; 
 
 const CharacterList = ({ selectedPlanets }: { selectedPlanets: string[] }) => {
   const [characters, setCharacters] = useState<Character[]>([]);
@@ -59,6 +59,7 @@ const CharacterList = ({ selectedPlanets }: { selectedPlanets: string[] }) => {
 
   // Controlar o número de personagens renderizados
   const displayedCharacters = filteredCharacters.slice(0, page * itemsPerPage);
+
 
   return (
     <div>
