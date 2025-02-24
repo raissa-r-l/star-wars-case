@@ -43,12 +43,12 @@ const Filter = ({ onFilterChange }: { onFilterChange: (planets: string[]) => voi
   }, [selectedPlanets]);
 
   return (
-    <div className="border-t border-b border-gray-300 py-4 px-6 flex flex-col mb-[50px] md:flex-row items-center justify-between bg-white">
-      <div className="flex items-center space-x-4">
+    <div className="py-4 flex flex-col mb-[50px] md:flex-row items-center justify-start sm:justify-between bg-white border-gray-300 border-t md:border-b">
+      <div className="flex items-center space-x-4 w-max sm:w-[390px] self-start md:self-auto md:ml-0">
         <label className="text-[#666666] font-medium">Filter by:</label>
         <select
           onChange={handleFilterChange}
-          className="border-0 border-b-2 border-gray-400 min-w-[200px] outline-none max-w-[240px] p-2 shadow-sm bg-white text-[#002B56] focus:ring-0 focus:border-blue-500"
+          className="border-0 border-b-2 border-gray-400 min-w-[150px] sm:min-w-[200px] outline-none max-w-[240px] p-2 shadow-sm bg-white text-[#002B56] focus:ring-0 focus:border-blue-500"
         >
           <option value="All" className="text-[#002B56]">All</option>
           {planets.map((planet, index) => (
@@ -71,10 +71,10 @@ const Filter = ({ onFilterChange }: { onFilterChange: (planets: string[]) => voi
         )}
       </div>
 
-      {/* Botão "Clear All" */}
+      {/* Botão "Clear All" (Somente para telas maiores que md) */}
       <button
         onClick={clearFilters}
-        className="border border-gray-400 px-4 py-2 text-gray-500 text-sm hover:bg-gray-100 transition"
+        className="hidden md:block border border-gray-400 px-4 py-2 text-gray-500 text-sm hover:bg-gray-100 transition"
       >
         Clear All
       </button>
