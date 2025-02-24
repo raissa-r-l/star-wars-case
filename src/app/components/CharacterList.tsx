@@ -66,11 +66,20 @@ const CharacterList = ({ selectedPlanets }: { selectedPlanets: string[] }) => {
       <div className="h-10 mb-[43px]">
         <h1 className="font-light text-[34px] leading-10 text-[#333333]">All Characters</h1>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl4k:grid-cols-6 gap-4">
-        {displayedCharacters.map((char, index) => (
-          <CharacterCard key={index} character={char} />
-        ))}
-      </div>
+      {displayedCharacters.length > 0 ? (
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl4k:grid-cols-6 gap-4">
+    {displayedCharacters.map((char, index) => (
+      <CharacterCard key={index} character={char} />
+    ))}
+  </div>
+      ):(    <div className="flex flex-col items-center justify-center text-center mt-20">
+        <img src="https://img.icons8.com/?size=100&id=1eGeikx9BzTw&format=png&color=000000" alt="Yoda" className="w-32 h-32 mb-4 opacity-80" />
+        <p className="text-xl font-semibold text-gray-600">
+          "Find no characters, you have. Patience must be."
+        </p>
+        <p className="text-gray-500 mt-2 mb-5">Try another filter, you should.</p>
+      </div>)}
+  
       <div className="w-full h-12 flex items-center justify-center">
         <button
           onClick={() => setPage(page + 1)}
