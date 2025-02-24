@@ -63,7 +63,7 @@ const Filter = ({ onFilterChange }: { onFilterChange: (planets: string[]) => voi
       <div className="flex flex-wrap gap-2 mt-4 md:mt-0">
         {selectedPlanets.map((planet) =>
           planet !== "All" ? (
-            <div key={planet} className="flex items-center bg-gray-200 px-3 py-1 rounded-full text-sm">
+            <div key={planet} className="flex items-center border border-gray-400 px-4 py-2 text-gray-500 text-sm hover:bg-gray-100 transition">
               {planet}
               <button onClick={() => removeFilter(planet)} className="ml-2 text-red-500">✕</button>
             </div>
