@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌌 Star Wars Characters
 
-## Getting Started
+Este é um projeto que lista personagens do universo Star Wars, utilizando a [SWAPI (Star Wars API)](https://swapi.dev/). Ele permite filtrar personagens por planeta e exibe os dados de forma responsiva e dinâmica.
 
-First, run the development server:
+## 📌 Funcionalidades
 
+✅ Listagem de personagens da franquia Star Wars.  
+✅ Filtros de personagens por planeta.  
+✅ Opção de selecionar múltiplos filtros cumulativos.  
+✅ Paginação com carregamento incremental ("Load More").  
+✅ Layout responsivo para **mobile, tablet, desktop e 4K**.  
+✅ Exibição especial para **telas 4K** com 6 personagens por linha.  
+✅ Mensagem do Yoda quando não houver resultados.  
+
+## 🚀 Tecnologias Utilizadas
+
+O projeto foi desenvolvido com a seguinte stack:
+
+- **⚛️ Next.js** - Framework React para aplicações SSR e SSG.  
+- **🎨 Tailwind CSS** - Estilização rápida e eficiente.  
+- **⚡ TypeScript** - Tipagem estática para maior segurança no código.  
+- **📡 SWAPI** - API pública de Star Wars para obtenção dos dados.  
+
+## 🛠️ Como Rodar o Projeto
+
+### 1️⃣ **Pré-requisitos**
+Antes de começar, certifique-se de ter instalado:
+- **Node.js** (Recomendado: versão LTS)
+- **npm** ou **yarn**
+
+### 2️⃣ **Clonar o Repositório**
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/seu-usuario/star-wars-characters.git
+cd star-wars-characters
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 3️⃣ Instalar as Dependências
+``` bash
+npm install
+# ou
+yarn install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 4️⃣ Rodar o Servidor de Desenvolvimento
+``` bash
+npm run dev
+# ou
+yarn dev
+```
+Agora o projeto estará disponível em http://localhost:3000 🚀.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+## 📌 Melhorias Futuras
 
-To learn more about Next.js, take a look at the following resources:
+🔹 Melhorar o sistema de paginação para suportar carregamento infinito.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+🔹 Implementar busca por nome de personagem.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+🔹 Criar um sistema de favoritos para salvar personagens preferidos.
 
-## Deploy on Vercel
+🔹 Desenvolvido com 💙 por Raissa Reis Lopes
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### "Que a Força esteja com você!"
