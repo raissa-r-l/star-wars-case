@@ -10,6 +10,9 @@ const config: Config = {
       fontFamily: {
         helvetica: ['"Helvetica Neue"', 'sans-serif'],
       },
+      screens: {
+        "xl4k": "2000px", 
+      },
     },
   },
   plugins: [],

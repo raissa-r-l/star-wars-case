@@ -1,7 +1,7 @@
 // src/app/_components/Header.tsx
 const Header = () => {
     return (
-      <header className="w-full max-w-[1820px] mx-auto mt-20 mb-[50px]">
+      <header className="w-full mx-auto mt-20 mb-[50px]">
         <h1 className="text-[32px] sm:text-[54px] text-[#333333]  leading-10 sm:leading-[64px] mb-[25px] font-light">
           Star Wars Characters
         </h1>

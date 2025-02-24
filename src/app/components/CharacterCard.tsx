@@ -28,7 +28,6 @@ const CharacterCard = ({ character }: { character: Character }) => {
       <div className="h-7 sm:mb-[13px]">
         <p className="text-[15px] sm:text-base leading-7 tracking-[1px] font-normal text-black">{planetName}</p>
       </div>
-
       <div className="hidden sm:block mt-2">
       <div className="h-4 my-0">
       <p className="text-[12px] leading-4 tracking-[0.5px] text-[#757575]">HEIGHT • {character.height}</p>
