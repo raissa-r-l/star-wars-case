@@ -4,7 +4,7 @@ import { fetchPlanets } from "../services/api";
 
 const Filter = ({ onFilterChange }: { onFilterChange: (planets: string[]) => void }) => {
   const [planets, setPlanets] = useState<string[]>([]);
-  const [selectedPlanets, setSelectedPlanets] = useState<string[]>([]);
+  const [selectedPlanets, setSelectedPlanets] = useState<string[]>(["All"]);
 
   useEffect(() => {
     fetchPlanets().then((data) => {
@@ -14,24 +14,32 @@ const Filter = ({ onFilterChange }: { onFilterChange: (planets: string[]) => voi
 
   const handleFilterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedPlanet = event.target.value;
-    
-    if (!selectedPlanet) return;
 
-    setSelectedPlanets((prev) =>
-      prev.includes(selectedPlanet) ? prev.filter((p) => p !== selectedPlanet) : [...prev, selectedPlanet]
-    );
+    if (selectedPlanet === "All") {
+      setSelectedPlanets(["All"]); // Se "All" for selecionado, remove qualquer outro filtro
+    } else {
+      setSelectedPlanets((prev) =>
+        prev.includes(selectedPlanet)
+          ? prev.filter((p) => p !== selectedPlanet)
+          : [...prev.filter((p) => p !== "All"), selectedPlanet]
+      );
+    }
   };
 
   const removeFilter = (planet: string) => {
-    setSelectedPlanets((prev) => prev.filter((p) => p !== planet));
+    setSelectedPlanets((prev) => {
+      const updatedFilters = prev.filter((p) => p !== planet);
+      return updatedFilters.length === 0 ? ["All"] : updatedFilters;
+    });
   };
 
   const clearFilters = () => {
-    setSelectedPlanets([]);
+    setSelectedPlanets(["All"]);
   };
 
   useEffect(() => {
-    onFilterChange(selectedPlanets);
+    // Se "All" estiver selecionado, passamos uma lista vazia para mostrar todos os planetas
+    onFilterChange(selectedPlanets.includes("All") ? [] : selectedPlanets);
   }, [selectedPlanets]);
 
   return (
@@ -40,10 +48,9 @@ const Filter = ({ onFilterChange }: { onFilterChange: (planets: string[]) => voi
         <label className="text-[#666666] font-medium">Filter by:</label>
         <select
           onChange={handleFilterChange}
-         // className="border border-gray-300 min-w-[200px] max-w-[240px] p-2 shadow-sm bg-white focus:ring focus:ring-blue-200"
-         className="border-0 border-b-2 border-gray-400 min-w-[200px] outline-none max-w-[240px] p-2 shadow-sm bg-white text-[#002B56] focus:ring-0 focus:border-blue-500"
+          className="border-0 border-b-2 border-gray-400 min-w-[200px] outline-none max-w-[240px] p-2 shadow-sm bg-white text-[#002B56] focus:ring-0 focus:border-blue-500"
         >
-          <option value="" className="text-[#002B56]">All</option>
+          <option value="All" className="text-[#002B56]">All</option>
           {planets.map((planet, index) => (
             <option key={index} value={planet} className="text-[#002B56]">
               {planet}
@@ -54,12 +61,14 @@ const Filter = ({ onFilterChange }: { onFilterChange: (planets: string[]) => voi
 
       {/* Filtros Selecionados */}
       <div className="flex flex-wrap gap-2 mt-4 md:mt-0">
-        {selectedPlanets.map((planet) => (
-          <div key={planet} className="flex items-center bg-gray-200 px-3 py-1 rounded-full text-sm">
-            {planet}
-            <button onClick={() => removeFilter(planet)} className="ml-2 text-red-500">✕</button>
-          </div>
-        ))}
+        {selectedPlanets.map((planet) =>
+          planet !== "All" ? (
+            <div key={planet} className="flex items-center bg-gray-200 px-3 py-1 rounded-full text-sm">
+              {planet}
+              <button onClick={() => removeFilter(planet)} className="ml-2 text-red-500">✕</button>
+            </div>
+          ) : null
+        )}
       </div>
 
       {/* Botão "Clear All" */}
