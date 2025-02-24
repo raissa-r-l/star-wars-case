@@ -16,7 +16,7 @@ const Filter = ({ onFilterChange }: { onFilterChange: (planets: string[]) => voi
     const selectedPlanet = event.target.value;
 
     if (selectedPlanet === "All") {
-      setSelectedPlanets(["All"]); // Se "All" for selecionado, remove qualquer outro filtro
+      setSelectedPlanets(["All"]); 
     } else {
       setSelectedPlanets((prev) =>
         prev.includes(selectedPlanet)
@@ -38,7 +38,6 @@ const Filter = ({ onFilterChange }: { onFilterChange: (planets: string[]) => voi
   };
 
   useEffect(() => {
-    // Se "All" estiver selecionado, passamos uma lista vazia para mostrar todos os planetas
     onFilterChange(selectedPlanets.includes("All") ? [] : selectedPlanets);
   }, [selectedPlanets]);
 
@@ -59,7 +58,6 @@ const Filter = ({ onFilterChange }: { onFilterChange: (planets: string[]) => voi
         </select>
       </div>
 
-      {/* Filtros Selecionados */}
       <div className="flex flex-wrap gap-2 mt-4 md:mt-0">
         {selectedPlanets.map((planet) =>
           planet !== "All" ? (
@@ -71,7 +69,6 @@ const Filter = ({ onFilterChange }: { onFilterChange: (planets: string[]) => voi
         )}
       </div>
 
-      {/* Botão "Clear All" (Somente para telas maiores que md) */}
       <button
         onClick={clearFilters}
         className="hidden md:block border border-gray-400 px-4 py-2 text-gray-500 text-sm hover:bg-gray-100 transition"

@@ -15,7 +15,6 @@ const CharacterList = ({ selectedPlanets }: { selectedPlanets: string[] }) => {
   const [allCharacters, setAllCharacters] = useState<Character[]>([]); 
   const [itemsPerPage, setItemsPerPage] = useState(ITEMS_PER_PAGE_DEFAULT); 
 
-  // Detectar o tamanho da tela e ajustar os itens por página
   useEffect(() => {
     const updateItemsPerPage = () => {
       if (window.innerWidth >= 2000) {
@@ -30,7 +29,6 @@ const CharacterList = ({ selectedPlanets }: { selectedPlanets: string[] }) => {
     return () => window.removeEventListener("resize", updateItemsPerPage);
   }, []);
 
-  // Carregar personagens da API
   useEffect(() => {
     setLoading(true);
     fetchCharacters(page).then((data) => {
@@ -52,12 +50,10 @@ const CharacterList = ({ selectedPlanets }: { selectedPlanets: string[] }) => {
     fetchPlanets();
   }, []);
 
-  // Filtrar personagens com base nos planetas selecionados
   const filteredCharacters = selectedPlanets.length
     ? allCharacters.filter((char) => selectedPlanets.includes(planetsMap[char.homeworld] || ""))
     : allCharacters;
 
-  // Controlar o número de personagens renderizados
   const displayedCharacters = filteredCharacters.slice(0, page * itemsPerPage);
 
 
