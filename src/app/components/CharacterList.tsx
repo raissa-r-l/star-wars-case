@@ -3,12 +3,12 @@ import { useState, useEffect } from "react";
 import { fetchCharacters } from "../services/api";
 import CharacterCard from "./CharacterCard";
 import { Character } from "../types/character";
+import Image from "next/image";
 
 const ITEMS_PER_PAGE_DEFAULT = 8; 
 const ITEMS_PER_PAGE_4K = 6; 
 
 const CharacterList = ({ selectedPlanets }: { selectedPlanets: string[] }) => {
-  const [characters, setCharacters] = useState<Character[]>([]);
   const [planetsMap, setPlanetsMap] = useState<{ [key: string]: string }>({});
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -42,7 +42,7 @@ const CharacterList = ({ selectedPlanets }: { selectedPlanets: string[] }) => {
       const response = await fetch("https://swapi.dev/api/planets/");
       const data = await response.json();
       const newPlanetsMap: { [key: string]: string } = {};
-      data.results.forEach((planet: any) => {
+      data.results.forEach((planet: { url: string; name: string }) => {
         newPlanetsMap[planet.url] = planet.name;
       });
       setPlanetsMap(newPlanetsMap);
@@ -69,7 +69,13 @@ const CharacterList = ({ selectedPlanets }: { selectedPlanets: string[] }) => {
     ))}
   </div>
       ):(    <div className="flex flex-col items-center justify-center text-center mt-20">
-        <img src="https://img.icons8.com/?size=100&id=1eGeikx9BzTw&format=png&color=000000" alt="Yoda" className="w-32 h-32 mb-4 opacity-80" />
+        <Image
+          src="https://img.icons8.com/?size=100&id=1eGeikx9BzTw&format=png&color=000000"
+          alt="Yoda"
+          width={128}
+          height={128}
+          className="w-32 h-32 mb-4 opacity-80"
+        />
         <p className="text-xl font-semibold text-gray-600">
           "Find no characters, you have. Patience must be."
         </p>

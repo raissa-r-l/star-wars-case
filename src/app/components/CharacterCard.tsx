@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Character } from "../types/character";
+import Image from "next/image";
 
 const CharacterCard = ({ character }: { character: Character }) => {
   const [planetName, setPlanetName] = useState("");
@@ -15,10 +16,13 @@ const CharacterCard = ({ character }: { character: Character }) => {
 
   return (
     <div className="flex sm:block items-center h-[176px] sm:h-[478px] gap-x-[30px] hover:border hover:rounded-md hover:shadow-md bg-white">
-    <img
+   <Image
       src={`https://picsum.photos/300/200?random=${character.name}`}
       alt={character.name}
+      width={300}
+      height={200}
       className="w-[115px] h-[130px] self-start sm:w-[432.5px] sm:h-[230px]"
+      priority
     />
 
     <div className="flex flex-col h-full justify-start sm:block ml-0 sm:ml-0">

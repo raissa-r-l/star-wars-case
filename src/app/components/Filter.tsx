@@ -13,7 +13,7 @@ const Filter = ({ onFilterChange }: { onFilterChange: (planets: string[]) => voi
   }, []);
 
   const handleFilterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedPlanet = event.target.value;
+    const selectedPlanet: string = event.target.value;
 
     if (selectedPlanet === "All") {
       setSelectedPlanets(["All"]); 
@@ -39,7 +39,7 @@ const Filter = ({ onFilterChange }: { onFilterChange: (planets: string[]) => voi
 
   useEffect(() => {
     onFilterChange(selectedPlanets.includes("All") ? [] : selectedPlanets);
-  }, [selectedPlanets]);
+  }, [selectedPlanets, onFilterChange]);
 
   return (
     <div className="py-4 flex flex-col mb-[50px] md:flex-row items-center justify-start sm:justify-between bg-white border-gray-300 border-t md:border-b">
