@@ -8,7 +8,7 @@ const Filter = ({ onFilterChange }: { onFilterChange: (planets: string[]) => voi
 
   useEffect(() => {
     fetchPlanets().then((data) => {
-      setPlanets(data.results.map((planet: any) => planet.name));
+      setPlanets(data.results.map((planet: { name: string }) => planet.name));
     });
   }, []);
 

@@ -77,7 +77,7 @@ const CharacterList = ({ selectedPlanets }: { selectedPlanets: string[] }) => {
           className="w-32 h-32 mb-4 opacity-80"
         />
         <p className="text-xl font-semibold text-gray-600">
-          "Find no characters, you have. Patience must be."
+          Find no characters, you have. Patience must be.
         </p>
         <p className="text-gray-500 mt-2 mb-5">Try another filter, you should.</p>
       </div>)}
